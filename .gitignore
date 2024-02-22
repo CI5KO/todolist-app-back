@@ -1,0 +1,18 @@
+# Node Modules
+/node_modules
+
+# package lock
+package-lock.json
+
+# Build Folder
+/build
+
+# Env
+.env
+.env.example
+
+# Prettier
+.prettierrc.json
+
+# others
+dist
