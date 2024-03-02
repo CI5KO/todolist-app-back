@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid'
 import { TaskEntity } from './task.entity'
 
 export class TaskValue implements TaskEntity {
-  id: string
+  uuid: string
   userId: string
   title: string
   description: string
@@ -22,7 +22,7 @@ export class TaskValue implements TaskEntity {
     status: number
     priority: number
   }) {
-    this.id = uuid()
+    this.uuid = uuid()
     this.userId = userId
     this.title = title
     this.description = description

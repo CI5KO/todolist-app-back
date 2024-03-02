@@ -1,5 +1,5 @@
 export interface TaskEntity {
-  id: string
+  uuid: string
   userId: string
   title: string
   description: string
