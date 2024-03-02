@@ -7,21 +7,23 @@ class UserModel extends Model {}
 UserModel.init(
   {
     uuid: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       unique: true,
     },
-    name: DataTypes.STRING,
+    name: DataTypes.TEXT,
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       unique: true,
     },
-    password: DataTypes.STRING,
+    password: DataTypes.TEXT,
   },
   {
     sequelize,
     modelName: 'users',
-    timestamps: true,
+    timestamps: false,
   }
 )
+
+UserModel.sync({ force: true, match: /_development%/ })
 
 export default UserModel

@@ -10,11 +10,11 @@ export class UserController {
   public async getCtrl({ query }: Request, res: Response) {
     const { uuid = '' } = query
     const user = await this.userUseCase.getDetailUSer(`${uuid}`)
-    res.send({ user })
+    res.status(200).send({ user })
   }
 
   public async insertCtrl({ body }: Request, res: Response) {
     const user = await this.userUseCase.registerUser(body)
-    res.send({ user })
+    res.status(201).send({ user })
   }
 }

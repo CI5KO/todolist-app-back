@@ -19,8 +19,8 @@ export class TaskController {
 
   async getByUserId(req: Request, res: Response) {
     const { id } = req.params
-    const task = await this.taskUseCase.getByUserId(id)
-    res.status(200).json(task)
+    const tasks = await this.taskUseCase.getByUserId(id)
+    res.status(200).json(tasks)
   }
 
   async create(req: Request, res: Response) {

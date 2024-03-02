@@ -7,20 +7,22 @@ class TaskModel extends Model {}
 TaskModel.init(
   {
     uuid: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       unique: true,
     },
-    userId: DataTypes.STRING,
-    title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    userId: DataTypes.TEXT,
+    title: DataTypes.TEXT,
+    description: DataTypes.TEXT,
     status: DataTypes.INTEGER,
     priority: DataTypes.INTEGER,
   },
   {
     sequelize,
     modelName: 'tasks',
-    timestamps: true,
+    timestamps: false,
   }
 )
+
+TaskModel.sync({ force: true, match: /_development%/ })
 
 export default TaskModel
