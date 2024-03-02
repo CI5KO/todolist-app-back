@@ -12,12 +12,10 @@ export class UserUseCase {
 
   public registerUser = async ({ name, email, password }: registerProps) => {
     const userValue = new UserValue({ name, email, password })
-    const userCreated = await this.userRepository.registerUser(userValue)
-    return userCreated
+    return await this.userRepository.registerUser(userValue)
   }
 
   public getDetailUSer = async (uuid: string) => {
-    const user = await this.userRepository.findUserById(uuid)
-    return user
+    return await this.userRepository.findUserById(uuid)
   }
 }

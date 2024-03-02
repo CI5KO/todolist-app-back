@@ -1,6 +1,5 @@
 import { TaskEntity } from '../../domain/task.entity'
 import { TaskRepository } from '../../domain/task.repository'
-import { TaskValue } from '../../domain/task.value'
 
 import TaskModel from '../model/pg.schema'
 
@@ -16,8 +15,7 @@ export class PgRepository implements TaskRepository {
   }
 
   async create(taskIn: TaskEntity): Promise<any> {
-    const taskInsert = new TaskValue(taskIn)
-    const task = await TaskModel.create({ ...taskInsert })
+    const task = await TaskModel.create({ ...taskIn })
     return task
   }
 

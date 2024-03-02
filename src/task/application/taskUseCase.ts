@@ -1,6 +1,8 @@
 import { TaskRepository } from '../domain/task.repository'
 import { TaskValue } from '../domain/task.value'
 
+interface createTask extends Omit<TaskValue, 'uuid'> {}
+
 export class TaskUseCase {
   constructor(private readonly taskRepository: TaskRepository) {}
 
@@ -12,8 +14,9 @@ export class TaskUseCase {
     return await this.taskRepository.getByUserId(userId)
   }
 
-  async create(task: TaskValue): Promise<TaskValue> {
-    return await this.taskRepository.create(task)
+  async create(task: createTask): Promise<TaskValue> {
+    const taskValue = new TaskValue(task)
+    return await this.taskRepository.create(taskValue)
   }
 
   async update(task: TaskValue): Promise<TaskValue> {
