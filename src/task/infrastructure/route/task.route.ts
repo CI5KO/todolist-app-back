@@ -10,7 +10,7 @@ const taskUseCase = new TaskUseCase(taskRepo)
 const taskCtrl = new TaskController(taskUseCase)
 
 route.get('/:id', taskCtrl.get)
-route.get('/:id', taskCtrl.getByUserId)
+route.get('/userId/:id', taskCtrl.getByUserId)
 route.post('/', taskCtrl.create)
 route.put('/:id', taskCtrl.update)
 route.delete('/:id', taskCtrl.delete)
