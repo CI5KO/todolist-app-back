@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { TaskUseCase } from '../../application/taskUseCase'
-import { TaskValue } from '../../domain/task.value'
+import { TaskRegisterEntiry } from '../../domain/task.entity'
 
 export class TaskController {
   constructor(private taskUseCase: TaskUseCase) {
@@ -24,15 +24,15 @@ export class TaskController {
   }
 
   async create(req: Request, res: Response) {
-    const { task }: { task: TaskValue } = req.body
+    const { task }: { task: TaskRegisterEntiry } = req.body
     const response = await this.taskUseCase.create(task)
     res.status(201).json(response)
   }
 
   async update(req: Request, res: Response) {
     const { id } = req.params
-    const { task }: { task: TaskValue } = req.body
-    const response = await this.taskUseCase.update({ ...task, uuid: id })
+    const { task }: { task: TaskRegisterEntiry } = req.body
+    const response = await this.taskUseCase.update({ uuid: id, ...task })
     res.status(201).json(response)
   }
 

@@ -6,3 +6,5 @@ export interface TaskEntity {
   status: number
   priority: number
 }
+
+export interface TaskRegisterEntiry extends Omit<TaskEntity, 'uuid'> {}

@@ -4,3 +4,5 @@ export interface UserEntity {
   email: string
   password: string
 }
+
+export interface UserRegisterEntiry extends Omit<UserEntity, 'uuid'> {}

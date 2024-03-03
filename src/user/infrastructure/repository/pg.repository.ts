@@ -1,4 +1,4 @@
-import { UserEntity } from '../../domain/user.entity'
+import { UserRegisterEntiry } from '../../domain/user.entity'
 import { UserRepository } from '../../domain/user.repository'
 
 import UserModel from '../model/pg.schema'
@@ -8,9 +8,9 @@ export class PgRepository implements UserRepository {
     const user = await UserModel.findOne({ where: { uuid } })
     return user
   }
-  async registerUser(userIn: UserEntity): Promise<any> {
+  async registerUser(userIn: UserRegisterEntiry): Promise<any> {
     const user = await UserModel.create({
-      userIn,
+      ...userIn,
     })
     return user
   }

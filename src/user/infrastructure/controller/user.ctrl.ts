@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { UserUseCase } from '../../application/userUseCase'
+import { UserRegisterEntiry } from '../../domain/user.entity'
 
 export class UserController {
   constructor(private userUseCase: UserUseCase) {
@@ -13,8 +14,9 @@ export class UserController {
     res.status(200).send({ user })
   }
 
-  public async insertCtrl({ body }: Request, res: Response) {
-    const user = await this.userUseCase.registerUser(body)
-    res.status(201).send({ user })
+  public async insertCtrl(req: Request, res: Response) {
+    const { user }: { user: UserRegisterEntiry } = req.body
+    const response = await this.userUseCase.registerUser(user)
+    res.status(201).send(response)
   }
 }

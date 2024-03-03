@@ -1,21 +1,16 @@
 import { UserRepository } from '../domain/user.repository'
+import { UserRegisterEntiry } from '../domain/user.entity'
 import { UserValue } from '../domain/user.value'
-
-interface registerProps {
-  name: string
-  email: string
-  password: string
-}
 
 export class UserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
 
-  public registerUser = async ({ name, email, password }: registerProps) => {
-    const userValue = new UserValue({ name, email, password })
+  async registerUser(userIn: UserRegisterEntiry) {
+    const userValue = new UserValue(userIn)
     return await this.userRepository.registerUser(userValue)
   }
 
-  public getDetailUSer = async (uuid: string) => {
+  async getDetailUSer(uuid: string) {
     return await this.userRepository.findUserById(uuid)
   }
 }
