@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev ./src/index.ts",
-    "start": "node ./build/src/index.js"
+    "start": "node ./build/index.js"
   },
   "keywords": [],
   "dependencies": {
