@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid'
-import { TaskEntity } from './task.entity'
+import { TaskEntity, TaskRegisterEntiry } from './task.entity'
 
 export class TaskValue implements TaskEntity {
   uuid: string
@@ -15,13 +15,7 @@ export class TaskValue implements TaskEntity {
     description,
     status,
     priority,
-  }: {
-    userId: string
-    title: string
-    description: string
-    status: number
-    priority: number
-  }) {
+  }: TaskRegisterEntiry) {
     this.uuid = uuid()
     this.userId = userId
     this.title = title

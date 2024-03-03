@@ -9,17 +9,17 @@ const MOCK_USER: UserEntity = {
 }
 
 export class MockRepository implements UserRepository {
-  async findUserById(uuid: string): Promise<UserEntity> {
+  async get(uuid: string): Promise<UserEntity> {
     const user = MOCK_USER
     console.log(uuid)
     return user
   }
-  async registerUser(userIn: UserEntity): Promise<UserEntity> {
+  async create(userIn: UserEntity): Promise<UserEntity> {
     const user = MOCK_USER
     console.log(userIn)
     return user
   }
-  async listUser(): Promise<UserEntity[]> {
+  async list(): Promise<UserEntity[]> {
     const users = [MOCK_USER, MOCK_USER, MOCK_USER]
     return users
   }

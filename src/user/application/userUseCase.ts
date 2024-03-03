@@ -5,12 +5,12 @@ import { UserValue } from '../domain/user.value'
 export class UserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async registerUser(userIn: UserRegisterEntiry) {
-    const userValue = new UserValue(userIn)
-    return await this.userRepository.registerUser(userValue)
+  async get(uuid: string) {
+    return await this.userRepository.get(uuid)
   }
 
-  async getDetailUSer(uuid: string) {
-    return await this.userRepository.findUserById(uuid)
+  async create(userIn: UserRegisterEntiry) {
+    const userValue = new UserValue(userIn)
+    return await this.userRepository.create(userValue)
   }
 }
