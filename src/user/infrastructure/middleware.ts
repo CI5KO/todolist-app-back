@@ -10,7 +10,9 @@ export function validateUserRequest(
   const requestBody = ['name', 'email', 'password']
 
   if (user === undefined) {
-    res.status(400).send({ error: 'User data is required' })
+    res
+      .status(400)
+      .send({ error: 'User is not in the request body, try again' })
     return
   }
   for (const key of requestBody) {
