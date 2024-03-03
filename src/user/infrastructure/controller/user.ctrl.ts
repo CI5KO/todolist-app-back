@@ -15,8 +15,12 @@ export class UserController {
   }
 
   public async create(req: Request, res: Response) {
-    const { user }: { user: UserRegisterEntiry } = req.body
-    const response = await this.userUseCase.create(user)
-    res.status(201).send(response)
+    try {
+      const { user }: { user: UserRegisterEntiry } = req.body
+      const response = await this.userUseCase.create(user)
+      res.status(201).send(response)
+    } catch (error) {
+      res.status(500).send({ error })
+    }
   }
 }
