@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { UserUseCase } from '../../application/userUseCase'
 import { UserController } from '../controller/user.ctrl'
 
-import { validateUserRequest } from '../middleware'
+import { validateUserRequest } from '../security/middleware'
 import { PgRepository } from '../repository/pg.repository'
 
 const route = Router()

@@ -26,6 +26,6 @@ UserModel.init(
   }
 )
 
-UserModel.sync({ force: true, match: /_development%/ })
+UserModel.sync({ force: false, match: /_development%/ })
 
 export default UserModel

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { UserRegisterEntiry } from '../domain/user.entity'
+import { UserRegisterEntiry } from '../../domain/user.entity'
 
 export function validateUserRequest(
   req: Request,

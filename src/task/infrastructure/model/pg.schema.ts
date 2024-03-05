@@ -25,6 +25,6 @@ TaskModel.init(
   }
 )
 
-TaskModel.sync({ force: true, match: /_development%/ })
+TaskModel.sync({ force: false, match: /_development%/ })
 
 export default TaskModel
