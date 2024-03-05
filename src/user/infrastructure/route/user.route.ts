@@ -10,7 +10,7 @@ const userRepo = new PgRepository()
 const userUseCase = new UserUseCase(userRepo)
 const userCtrl = new UserController(userUseCase)
 
-route.get('/', userCtrl.get)
+route.get('/:id', userCtrl.get)
 route.post('/', validateUserRequest, userCtrl.create)
 
 export default route
