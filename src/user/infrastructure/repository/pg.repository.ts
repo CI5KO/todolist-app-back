@@ -12,7 +12,6 @@ export class PgRepository implements UserRepository {
     const user = await UserModel.create({
       ...userIn,
     })
-    console.log(user)
     return user
   }
   async list(): Promise<any> {
