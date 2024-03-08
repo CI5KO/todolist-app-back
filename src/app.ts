@@ -8,6 +8,12 @@ import taskRoute from './task/infrastructure/route/task.route'
 const app = express()
 
 app.use(cors())
+
+app.use((_req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  next()
+})
+
 app.use(express.json())
 
 app.use('/user', userRoute)
