@@ -1,5 +1,5 @@
 import { TaskRepository } from '../domain/task.repository'
-import { TaskRegisterEntiry } from '../domain/task.entity'
+import { TaskEntity, TaskRegisterEntiry } from '../domain/task.entity'
 import { TaskValue } from '../domain/task.value'
 
 export class TaskUseCase {
@@ -18,7 +18,7 @@ export class TaskUseCase {
     return await this.taskRepository.create(taskValue)
   }
 
-  async update(task: TaskValue): Promise<TaskValue> {
+  async update(task: TaskEntity): Promise<TaskEntity> {
     return await this.taskRepository.update(task)
   }
 
