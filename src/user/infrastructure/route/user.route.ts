@@ -12,5 +12,6 @@ const userCtrl = new UserController(userUseCase)
 
 route.get('/:id', userCtrl.get)
 route.post('/', validateUserRequest, userCtrl.create)
+route.post('/login', userCtrl.login)
 
 export default route

@@ -6,12 +6,17 @@ export class UserController {
   constructor(private userUseCase: UserUseCase) {
     this.create = this.create.bind(this)
     this.get = this.get.bind(this)
+    this.login = this.login.bind(this)
   }
 
   public async get(req: Request, res: Response) {
-    const { id } = req.params
-    const user = await this.userUseCase.get(id)
-    res.status(200).send({ user })
+    try {
+      const { id } = req.params
+      const user = await this.userUseCase.get(id)
+      res.status(200).send({ user })
+    } catch (error) {
+      res.status(500).send({ error })
+    }
   }
 
   public async create(req: Request, res: Response) {
@@ -19,6 +24,16 @@ export class UserController {
       const { user }: { user: UserRegisterEntiry } = req.body
       const response = await this.userUseCase.create(user)
       res.status(201).send(response)
+    } catch (error) {
+      res.status(500).send({ error })
+    }
+  }
+
+  public async login(req: Request, res: Response) {
+    try {
+      const { email, password }: { email: string; password: string } = req.body
+      const jwt = await this.userUseCase.login(email, password)
+      res.status(200).send({ jwt })
     } catch (error) {
       res.status(500).send({ error })
     }
