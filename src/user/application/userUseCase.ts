@@ -28,7 +28,7 @@ export class UserUseCase {
     const token: string = jwt.sign(
       { uuid: user.uuid, name: user.name, email: user.email },
       process.env.SECRET_KEY as string,
-      { expiresIn: '24h' }
+      { expiresIn: '7d' }
     )
 
     return token
