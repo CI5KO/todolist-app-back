@@ -11,6 +11,7 @@ TaskModel.init(
     uuid: {
       type: DataTypes.TEXT,
       unique: true,
+      primaryKey: true,
     },
     userId: DataTypes.TEXT,
     title: DataTypes.TEXT,

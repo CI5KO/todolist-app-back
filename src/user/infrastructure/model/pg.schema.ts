@@ -11,6 +11,7 @@ UserModel.init(
     uuid: {
       type: DataTypes.TEXT,
       unique: true,
+      primaryKey: true,
     },
     name: DataTypes.TEXT,
     email: {
