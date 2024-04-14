@@ -38,12 +38,40 @@ The project is structured as follows:
 5. Run `npm run build` to compile the Typescript code into the `dist` directory.
 6. Run `npm start` to start the application in production mode.
 
-## Docker Setup
+## Docker Configuration
 
-To run the application using Docker, follow these steps:
+This Dockerfile defines multiple stages for different environments: production, development, and documentation. Each stage is built from a Node.js base image.
+This configuration ensures that each environment is optimized for its specific needs, improving development efficiency and deployment performance.
 
-1. Build the Docker image by running `docker build -t todolist-app-back .`.
-2. Run the container with `docker run -p 3000:3000 todolist-app-back`.
+Base Image: Uses node:20.11.0.
+
+### Production
+
+Build
+
+```bash
+docker build --target production -t myapp-production .
+```
+
+Run
+
+```bash
+docker run -p 3000:3000 myapp-production
+```
+
+### Development
+
+Build
+
+```bash
+docker build --target development -t myapp-development .
+```
+
+Run
+
+```bash
+docker run -p 3000:3000 -p 9230:9230 myapp-development
+```
 
 ## Contributing
 
