@@ -25,33 +25,53 @@ export class TaskController {
   }
 
   async get(req: Request, res: Response) {
-    const { id } = req.params
-    const task = await this.taskUseCase.get(id)
-    res.status(200).json(task)
+    try {
+      const { id } = req.params
+      const task = await this.taskUseCase.get(id)
+      res.status(200).json(task)
+    } catch (error) {
+      res.status(500).send({ error })
+    }
   }
 
   async getByUserId(req: Request, res: Response) {
-    const { id } = req.params
-    const tasks = await this.taskUseCase.getByUserId(id)
-    res.status(200).json(tasks)
+    try {
+      const { id } = req.params
+      const tasks = await this.taskUseCase.getByUserId(id)
+      res.status(200).json(tasks)
+    } catch (error) {
+      res.status(500).send({ error })
+    }
   }
 
   async create(req: Request, res: Response) {
-    const { task }: { task: TaskRegisterEntiry } = req.body
-    const response = await this.taskUseCase.create(task)
-    res.status(201).json(response)
+    try {
+      const { task }: { task: TaskRegisterEntiry } = req.body
+      const response = await this.taskUseCase.create(task)
+      res.status(201).json(response)
+    } catch (error) {
+      res.status(500).send({ error })
+    }
   }
 
   async update(req: Request, res: Response) {
-    const { id } = req.params
-    const { task }: { task: TaskEntity } = req.body
-    const response = await this.taskUseCase.update({ ...task, uuid: id })
-    res.status(201).json(response)
+    try {
+      const { id } = req.params
+      const { task }: { task: TaskEntity } = req.body
+      const response = await this.taskUseCase.update({ ...task, uuid: id })
+      res.status(201).json(response)
+    } catch (error) {
+      res.status(500).send({ error })
+    }
   }
 
   async delete(req: Request, res: Response) {
-    const { id } = req.params
-    await this.taskUseCase.delete(id)
-    res.sendStatus(204)
+    try {
+      const { id } = req.params
+      await this.taskUseCase.delete(id)
+      res.sendStatus(204)
+    } catch (error) {
+      res.status(500).send({ error })
+    }
   }
 }
