@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev ./src/index.ts",
-    "start": "node ./build/index.js"
+    "start": "node ./build/index.js",
+    "deploy": "netlify deploy --prod"
   },
   "keywords": [],
   "dependencies": {
@@ -22,6 +23,8 @@
     "inversify": "6.0.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "8.2.0",
+    "netlify-cli": "^17.27.0",
+    "netlify-lambda": "^2.0.16",
     "pg": "8.11.3",
     "reflect-metadata": "0.2.1",
     "sequelize": "6.37.1",

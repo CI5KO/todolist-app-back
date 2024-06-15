@@ -17,6 +17,7 @@ import cors from 'express'
 
 import userRoute from './user/infrastructure/route/user.route'
 import taskRoute from './task/infrastructure/route/task.route'
+import HealtcheckRoute from './healthcheck'
 
 const app = express()
 
@@ -34,5 +35,6 @@ app.use(express.json())
 
 app.use('/user', userRoute)
 app.use('/task', taskRoute)
+app.use('/test', HealtcheckRoute)
 
 export default app
