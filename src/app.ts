@@ -12,7 +12,7 @@
  */
 
 import 'dotenv/config'
-import express from 'express'
+import express, { json } from 'express'
 import cors from 'express'
 
 import userRoute from './user/infrastructure/route/user.route'
@@ -22,19 +22,11 @@ import HealtcheckRoute from './healthcheck'
 const app = express()
 
 app.use(cors())
-
-app.use((_req, res, next) => {
-  res
-    .header('Access-Control-Allow-Origin', '*')
-    .header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-    .header('Access-Control-Allow-Headers', '*')
-  next()
-})
-
-app.use(express.json())
+app.use(json())
+app.options('*', cors())
 
 app.use('/user', userRoute)
 app.use('/task', taskRoute)
-app.use('/test', HealtcheckRoute)
+app.use('/healtCheck', HealtcheckRoute)
 
 export default app
