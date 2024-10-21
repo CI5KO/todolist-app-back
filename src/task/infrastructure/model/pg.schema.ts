@@ -11,11 +11,8 @@
  * Any contributions to this repository are subject to the original terms stated herein.
  */
 
-import { Sequelize, Model, DataTypes } from 'sequelize'
-
-const sequelize = new Sequelize(process.env.DATABASE_URL as string, {
-  logging: false,
-})
+import sequelize from '../dbConection'
+import { Model, DataTypes } from 'sequelize'
 
 class TaskModel extends Model {}
 
@@ -24,18 +21,18 @@ TaskModel.init(
     uuid: {
       type: DataTypes.TEXT,
       unique: true,
-      primaryKey: true,
+      primaryKey: true
     },
     userId: DataTypes.TEXT,
     title: DataTypes.TEXT,
     description: DataTypes.TEXT,
     status: DataTypes.INTEGER,
-    priority: DataTypes.INTEGER,
+    priority: DataTypes.INTEGER
   },
   {
     sequelize,
     modelName: 'tasks',
-    timestamps: false,
+    timestamps: false
   }
 )
 
