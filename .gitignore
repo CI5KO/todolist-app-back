@@ -9,7 +9,6 @@ package-lock.json
 
 # Env
 .env
-.env.example
 
 # Prettier
 .prettierrc.json
