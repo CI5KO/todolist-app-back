@@ -17,6 +17,7 @@ import { type Request, type Response, type NextFunction } from 'express'
 import { UserRegisterEntiry } from '../../domain/user.entity'
 
 class UserValidator {
+  private readonly SECRET: string = process.env.WP_TOKEN_SECRET as string
   public create(req: Request, res: Response, next: NextFunction) {
     const { user }: { user: UserRegisterEntiry } = req.body
     const requestBody = ['name', 'email', 'password']
@@ -50,7 +51,7 @@ class UserValidator {
 
       jwt.verify(
         token,
-        process.env.WP_TOKEN_SECRET as string,
+        this.SECRET,
         {
           maxAge: '7d'
         },
