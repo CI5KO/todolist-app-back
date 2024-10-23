@@ -15,6 +15,7 @@ import { Router } from 'express'
 import { TaskUseCase } from '../../application/taskUseCase'
 import { TaskController } from '../controller/task.ctrl'
 
+import UserValidator from '../../../user/infrastructure/security/middleware'
 import { PgRepository } from '../repository/pg.repository'
 
 const route = Router()
@@ -23,9 +24,9 @@ const taskUseCase = new TaskUseCase(taskRepo)
 const taskCtrl = new TaskController(taskUseCase)
 
 route.get('/:id', taskCtrl.get)
-route.get('/user-id/:id', taskCtrl.getByUserId)
-route.post('/', taskCtrl.create)
-route.put('/:id', taskCtrl.update)
-route.delete('/:id', taskCtrl.delete)
+route.get('/user-id/:id', UserValidator.auth, taskCtrl.getByUserId)
+route.post('/', UserValidator.auth, taskCtrl.create)
+route.put('/:id', UserValidator.auth, taskCtrl.update)
+route.delete('/:id', UserValidator.auth, taskCtrl.delete)
 
 export default route

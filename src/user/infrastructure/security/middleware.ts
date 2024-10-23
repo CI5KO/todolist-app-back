@@ -38,7 +38,7 @@ class UserValidator {
     next()
   }
 
-  public token(request: Request, response: Response, next: NextFunction) {
+  public auth(request: Request, response: Response, next: NextFunction) {
     try {
       const Authorization: string | undefined = request.header('Authorization')
       const token: string | undefined = Authorization?.replace('Bearer ', '')
