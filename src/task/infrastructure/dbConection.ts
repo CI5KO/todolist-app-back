@@ -1,6 +1,9 @@
+import 'dotenv/config'
 import { Sequelize } from 'sequelize'
 
-const taskSequelize = new Sequelize(process.env.TASK_DATABASE_URL as string, {
+const DATABASE_URL = process.env.TASK_DATABASE_URL
+
+const taskSequelize = new Sequelize(DATABASE_URL as string, {
   logging: false
 })
 
