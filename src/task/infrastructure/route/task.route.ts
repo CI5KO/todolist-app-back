@@ -23,7 +23,7 @@ const taskRepo = new PgRepository()
 const taskUseCase = new TaskUseCase(taskRepo)
 const taskCtrl = new TaskController(taskUseCase)
 
-route.get('/:id', taskCtrl.get)
+route.get('/:id', UserValidator.auth, taskCtrl.get)
 route.get('/user-id/:id', UserValidator.auth, taskCtrl.getByUserId)
 route.post('/', UserValidator.auth, taskCtrl.create)
 route.put('/:id', UserValidator.auth, taskCtrl.update)
