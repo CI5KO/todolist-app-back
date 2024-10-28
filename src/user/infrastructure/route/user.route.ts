@@ -15,16 +15,18 @@ import { Router } from 'express'
 import { UserUseCase } from '../../application/userUseCase'
 import { UserController } from '../controller/user.ctrl'
 
-import UserValidator from '../security/middleware'
+import { Middleware } from '../security/middleware'
 import { PgRepository } from '../repository/pg.repository'
 
 const route = Router()
+const middleware = new Middleware()
+
 const userRepo = new PgRepository()
 const userUseCase = new UserUseCase(userRepo)
 const userCtrl = new UserController(userUseCase)
 
 route.get('/:id', userCtrl.get)
-route.post('/', UserValidator.create, userCtrl.create)
+route.post('/', middleware.create, userCtrl.create)
 route.post('/login', userCtrl.login)
 
 export default route

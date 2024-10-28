@@ -16,7 +16,7 @@ import jwt, { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
 import { type Request, type Response, type NextFunction } from 'express'
 import { UserRegisterEntiry } from '../../domain/user.entity'
 
-class UserValidator {
+export class Middleware {
   private readonly SECRET: string = process.env.WP_TOKEN_SECRET as string
   public create(req: Request, res: Response, next: NextFunction) {
     const { user }: { user: UserRegisterEntiry } = req.body
@@ -90,5 +90,3 @@ class UserValidator {
     }
   }
 }
-
-export default new UserValidator()
