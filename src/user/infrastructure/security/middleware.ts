@@ -17,7 +17,7 @@ import { type Request, type Response, type NextFunction } from 'express'
 import { UserRegisterEntiry } from '../../domain/user.entity'
 
 export class Middleware {
-  private readonly SECRET: string = process.env.WP_TOKEN_SECRET as string
+  private readonly SECRET: string = process.env.TOKEN_SECRET as string
   public create(req: Request, res: Response, next: NextFunction) {
     const { user }: { user: UserRegisterEntiry } = req.body
     const requestBody = ['name', 'email', 'password']
