@@ -1,9 +1,10 @@
 import 'dotenv/config'
 import { Sequelize } from 'sequelize'
 
-const DATABASE_URL = process.env.USER_DATABASE_URL
+const DATABASE_URL: string =
+  process.env.USER_DATABASE_URL || 'https://localhost:5432/user'
 
-const userSequelize = new Sequelize(DATABASE_URL as string, {
+const userSequelize = new Sequelize(DATABASE_URL, {
   logging: false
 })
 
